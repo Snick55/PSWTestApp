@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PSWTestApp</string>
+    <string name="add_car_button">add car button</string>
+    <string name="try_again">Try again</string>
+    <string name="settings">Settings</string>
+    <string name="hint_description">description</string>
+    <string name="hint_price">price</string>
+    <string name="hint_manufacture">manufacture</string>
+    <string name="hint_brand">brand</string>
+    <string name="save">Save</string>
+</resources>
