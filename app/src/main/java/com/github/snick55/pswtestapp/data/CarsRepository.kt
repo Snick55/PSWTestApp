@@ -13,22 +13,24 @@ import javax.inject.Inject
 
 interface CarsRepository {
 
-  suspend  fun getAllCars(): Container<List<CarDomain>>
+    suspend fun getAllCars(): Container<List<CarDomain>>
 
-  suspend fun inflate()
+    suspend fun inflate()
 
-  fun getCarById(id: Int): Flow<CarDetailDomain>
+    fun getCarById(id: Int): Flow<CarDetailDomain>
 
-  suspend fun updateCar(car: CarDomain)
+    suspend fun updateCar(car: CarDomain)
 
 
-    class Base @Inject constructor(private val cacheDataSource: CacheDataSource,
-    private val mapper: DomainToDataMapper<CarData>): CarsRepository{
+    class Base @Inject constructor(
+        private val cacheDataSource: CacheDataSource,
+        private val mapper: DomainToDataMapper<CarData>
+    ) : CarsRepository {
 
         override fun getCarById(id: Int): Flow<CarDetailDomain> {
-           return cacheDataSource.getCarById(id).map{
-               it.carDataToDetailsDomain()
-           }
+            return cacheDataSource.getCarById(id).map {
+                it.carDataToDetailsDomain()
+            }
         }
 
         override suspend fun getAllCars(): Container<List<CarDomain>> {
@@ -36,7 +38,7 @@ interface CarsRepository {
                 Container.Success(cacheDataSource.getCachedCars().map {
                     it.carDataToDomain()
                 })
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 Container.Error(e)
             }
         }

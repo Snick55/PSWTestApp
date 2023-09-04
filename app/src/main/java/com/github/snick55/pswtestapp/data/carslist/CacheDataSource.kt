@@ -1,6 +1,5 @@
 package com.github.snick55.pswtestapp.data.carslist
 
-import com.github.snick55.pswtestapp.core.Logg
 import com.github.snick55.pswtestapp.data.EmptyCacheException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -40,7 +39,7 @@ interface CacheDataSource {
         }
 
         override suspend fun updateCar(carData: CarData) {
-            TODO("Not yet implemented")
+           dao.updateCar(carData.toCarDb())
         }
 
         override suspend fun getCachedCars():List<CarData> {

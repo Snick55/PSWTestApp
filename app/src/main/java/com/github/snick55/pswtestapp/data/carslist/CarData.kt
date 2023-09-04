@@ -13,4 +13,6 @@ data class CarData(
     fun carDataToDomain() = CarDomain(id, brand, description, manufacturer, price)
 
     fun carDataToDetailsDomain() = CarDetailDomain(brand, description, manufacturer, price)
+
+    fun toCarDb() = CarDB(id, brand, description, manufacturer, price)
 }

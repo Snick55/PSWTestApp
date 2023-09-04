@@ -3,6 +3,7 @@ package com.github.snick55.pswtestapp.di
 import com.github.snick55.pswtestapp.domain.GetCarByIdUseCase
 import com.github.snick55.pswtestapp.domain.GetCarsUseCase
 import com.github.snick55.pswtestapp.domain.InflateTableUseCase
+import com.github.snick55.pswtestapp.domain.UpdateCarUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -20,5 +21,7 @@ abstract class CarsDomainModule {
 
     @Binds
     abstract fun bindGetCarByIdUseCase(getCarByIdUseCase: GetCarByIdUseCase.Base):GetCarByIdUseCase
+    @Binds
+    abstract fun bindUpdateCarUseCase(useCase: UpdateCarUseCase.Base): UpdateCarUseCase
 
 }

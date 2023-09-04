@@ -1,9 +1,6 @@
 package com.github.snick55.pswtestapp.data.carslist
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -17,4 +14,7 @@ interface CarsDao {
 
     @Query("SELECT * FROM cars WHERE id = :id")
     fun getCarById(id: Int): Flow<CarDB>
+
+    @Update(entity = CarDB::class, onConflict = OnConflictStrategy.REPLACE)
+    fun updateCar(carDB: CarDB)
 }

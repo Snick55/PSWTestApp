@@ -6,6 +6,9 @@ import com.github.snick55.pswtestapp.presentation.carsList.DomainCarToItemUi
 import com.github.snick55.pswtestapp.presentation.details.CarDetailUi
 import com.github.snick55.pswtestapp.presentation.details.DetailCarCommunication
 import com.github.snick55.pswtestapp.presentation.details.DomainDetailsToUiMapper
+import com.github.snick55.pswtestapp.presentation.settings.CarDetailDomainToSettingsUiMapper
+import com.github.snick55.pswtestapp.presentation.settings.CarSettingsUi
+import com.github.snick55.pswtestapp.presentation.settings.SettingsCarCommunication
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -28,5 +31,11 @@ abstract class CarsPresentationModule {
 
     @Binds
     abstract fun bindDomainCarToItemUi(mapper: DomainCarToItemUi.Base): DomainCarToItemUi<CarItemUi>
+
+    @Binds
+    abstract fun bindCarDetailDomainToSettingsUiMapper(mapper: CarDetailDomainToSettingsUiMapper.Base): CarDetailDomainToSettingsUiMapper<CarSettingsUi>
+
+    @Binds
+    abstract fun bindSettingsCarCommunication(communication: SettingsCarCommunication.Base): SettingsCarCommunication
 
 }
