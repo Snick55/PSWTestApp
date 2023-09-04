@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentCarsList">
+    <fragment
+        android:id="@+id/fragmentCarsList"
+        android:name="com.github.snick55.pswtestapp.presentation.carsList.FragmentCarsList"
+        android:label="fragment_carlist"
+        tools:layout="@layout/fragment_carlist" >
+        <action
+            android:id="@+id/action_fragmentCarsList_to_fragmentDetails"
+            app:destination="@id/fragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDetails"
+        android:name="com.github.snick55.pswtestapp.presentation.details.FragmentDetails"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="carId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_fragmentDetails_to_fragmentSettings"
+            app:destination="@id/fragmentSettings" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSettings"
+        android:name="com.github.snick55.pswtestapp.presentation.settings.FragmentSettings"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <argument
+            android:name="carId"
+            app:argType="integer" />
+    </fragment>
+</navigation>
