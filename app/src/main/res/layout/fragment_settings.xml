@@ -35,10 +35,9 @@
                 android:layout_marginBottom="@dimen/large_space"
                 android:hint="@string/hint_brand"
                 app:expandedHintEnabled="false">
-
-
                 <com.google.android.material.textfield.TextInputEditText
-                    android:imeOptions="actionNext"
+                    android:imeOptions="actionGo"
+                    android:inputType="text"
                     android:id="@+id/brandEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -56,6 +55,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:imeOptions="actionNext"
+                    android:inputType="text"
                     android:id="@+id/manufactureEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,6 +90,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/descriptionEditText"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:imeOptions="actionDone"
                     android:layout_height="wrap_content"

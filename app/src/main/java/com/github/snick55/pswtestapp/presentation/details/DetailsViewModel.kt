@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.snick55.pswtestapp.domain.GetCarByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
@@ -18,12 +20,15 @@ class DetailsViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun getCarById(id: Int) {
-      viewModelScope.launch {
+      viewModelScope.launch(Dispatchers.IO) {
           getCarByIdUseCase.getCarById(id).collect{
-              communication.map(it.map(mapper))
+              withContext(Dispatchers.Main){
+                  communication.map(it.map(mapper))
+              }
           }
       }
     }
+
 
     fun observeDetailCar(owner: LifecycleOwner,observer: Observer<CarDetailUi>){
         communication.observeDetailCar(owner, observer)

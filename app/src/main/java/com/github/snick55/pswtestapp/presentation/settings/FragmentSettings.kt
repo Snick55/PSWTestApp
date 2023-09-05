@@ -19,33 +19,33 @@ class FragmentSettings : Fragment(R.layout.fragment_settings) {
     private val args: FragmentSettingsArgs by navArgs()
     private val viewModel by viewModels<SettingsViewModel>()
     private val binding by viewBinding<FragmentSettingsBinding>()
-
+    private var currentCar: CarSettingsUi? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getCarById(args.carId)
-
+        binding.custom.container = Container.Success("")
         viewModel.observeCar(viewLifecycleOwner) {
-            with(binding) {
+            currentCar = it
+                with(binding) {
                 it.show(brandEditText, descriptionEditText, manufactureEditText, priceEditText)
             }
         }
-
-        binding.custom.container = Container.Success("")
         binding.saveButton.setOnClickListener {
-            val price = if (binding.priceEditText.text.toString()
-                    .isBlank()
-            ) 0 else binding.priceEditText.text.toString().toInt()
-            val carSettingsUi = CarSettingsUi(
-                args.carId,
-                binding.brandEditText.text.toString(),
-                binding.descriptionEditText.text.toString(),
-                binding.manufactureEditText.text.toString(),
-                price
-            )
-            viewModel.updateCar(carSettingsUi)
+            viewModel.updateCar(simpleValidate())
             goBack()
         }
+    }
+
+
+    private fun simpleValidate(): CarSettingsUi {
+        val brand = binding.brandEditText.text.toString().ifBlank { currentCar!!.brand }
+        val description = binding.descriptionEditText.text.toString().ifBlank { currentCar!!.description }
+        val manufactures = binding.manufactureEditText.text.toString().ifBlank { currentCar!!.manufacturer }
+        val price = if (binding.priceEditText.text.toString()
+                .isBlank()
+        ) currentCar!!.price else binding.priceEditText.text.toString().toInt()
+        return  CarSettingsUi(args.carId,brand,description,manufactures,price)
     }
 
 }
