@@ -33,7 +33,8 @@ class FragmentCarsList: Fragment(R.layout.fragment_carlist) {
         }
 
         binding.addCarButton.setOnClickListener {
-
+            val directions = FragmentCarsListDirections.actionFragmentCarsListToFragmentAddCar()
+            navigateTo(directions)
         }
         binding.root.observe(viewLifecycleOwner,viewModel.cars){
             carsAdapter.setList(it)
@@ -42,10 +43,7 @@ class FragmentCarsList: Fragment(R.layout.fragment_carlist) {
         binding.root.setTryAgainListener {
             viewModel.getCars()
         }
-
-
     }
-
 }
 
 

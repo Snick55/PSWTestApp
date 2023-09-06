@@ -16,6 +16,8 @@ interface CacheDataSource {
 
    suspend fun updateCar(carData: CarData)
 
+   suspend fun createCar(carData: CarData)
+
     class Base @Inject constructor(private val dao: CarsDao) : CacheDataSource {
 
         private val initialCars = listOf<CarDB>(
@@ -31,6 +33,10 @@ interface CacheDataSource {
             CarDB(10,"Renault","Some description","France",343335),
             CarDB(11,"Peugeot","Some description","France",938271),
         )
+
+        override suspend fun createCar(carData: CarData) {
+            dao.insertCar(carData.toCarDb())
+        }
 
         override fun getCarById(id: Int): Flow<CarData> {
             return dao.getCarById(id).map{

@@ -8,4 +8,6 @@
     <string name="hint_manufacture">manufacture</string>
     <string name="hint_brand">brand</string>
     <string name="save">Save</string>
+    <string name="create_car">Create car</string>
+    <string name="create_the_new_car">Create the new car</string>
 </resources>

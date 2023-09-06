@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    tools:context=".presentation.addCar.FragmentAddCar">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:text="@string/create_the_new_car"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:boxCornerRadiusTopStart="@dimen/large_space"
+                app:boxCornerRadiusTopEnd="@dimen/large_space"
+                android:id="@+id/brantInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/large_space"
+                android:layout_marginBottom="@dimen/large_space"
+                android:hint="@string/hint_brand">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:imeOptions="actionGo"
+                    android:inputType="text"
+                    android:id="@+id/brandEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:boxCornerRadiusTopStart="@dimen/large_space"
+                app:boxCornerRadiusTopEnd="@dimen/large_space"
+                android:id="@+id/manufactureInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/large_space"
+                android:layout_marginBottom="@dimen/large_space"
+                android:hint="@string/hint_manufacture">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:id="@+id/manufactureEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:boxCornerRadiusTopStart="@dimen/large_space"
+                app:boxCornerRadiusTopEnd="@dimen/large_space"
+                android:id="@+id/PriceInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/large_space"
+                android:layout_marginBottom="@dimen/large_space"
+                android:hint="@string/hint_price">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/priceEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:boxCornerRadiusTopStart="@dimen/large_space"
+                app:boxCornerRadiusTopEnd="@dimen/large_space"
+                android:id="@+id/descriptionTextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/large_space"
+                android:hint="@string/hint_description">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descriptionEditText"
+                    android:inputType="text"
+                    android:layout_width="match_parent"
+                    android:imeOptions="actionDone"
+                    android:layout_height="wrap_content"
+                    android:lines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/createCarButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="@dimen/large_space"
+            android:layout_marginBottom="@dimen/large_space"
+            android:background="@color/cardview_shadow_start_color"
+            android:text="@string/create_car" />
+
+
+    </FrameLayout>
+
+</ScrollView>

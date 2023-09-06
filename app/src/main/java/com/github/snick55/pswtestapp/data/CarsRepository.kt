@@ -4,6 +4,7 @@ import com.github.snick55.pswtestapp.core.Container
 import com.github.snick55.pswtestapp.data.carslist.CacheDataSource
 import com.github.snick55.pswtestapp.data.carslist.CarData
 import com.github.snick55.pswtestapp.data.mappers.DomainToDataMapper
+import com.github.snick55.pswtestapp.domain.CarAddDomain
 import com.github.snick55.pswtestapp.domain.CarDetailDomain
 import com.github.snick55.pswtestapp.domain.CarDomain
 import kotlinx.coroutines.flow.Flow
@@ -21,10 +22,12 @@ interface CarsRepository {
 
     suspend fun updateCar(car: CarDomain)
 
+    suspend fun createCar(carAddDomain: CarAddDomain)
+
 
     class Base @Inject constructor(
         private val cacheDataSource: CacheDataSource,
-        private val mapper: DomainToDataMapper<CarData>
+        private val mapper: DomainToDataMapper<CarData>,
     ) : CarsRepository {
 
         override fun getCarById(id: Int): Flow<CarDetailDomain> {
@@ -49,6 +52,18 @@ interface CarsRepository {
 
         override suspend fun inflate() {
             cacheDataSource.inflate()
+        }
+
+        override suspend fun createCar(carAddDomain: CarAddDomain) {
+            cacheDataSource.createCar(
+                CarData(
+                    carAddDomain.id,
+                    carAddDomain.brand,
+                    carAddDomain.description,
+                    carAddDomain.manufacturer,
+                    carAddDomain.price.toInt()
+                )
+            )
         }
     }
 

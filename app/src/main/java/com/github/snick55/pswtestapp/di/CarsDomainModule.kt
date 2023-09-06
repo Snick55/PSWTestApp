@@ -1,9 +1,6 @@
 package com.github.snick55.pswtestapp.di
 
-import com.github.snick55.pswtestapp.domain.GetCarByIdUseCase
-import com.github.snick55.pswtestapp.domain.GetCarsUseCase
-import com.github.snick55.pswtestapp.domain.InflateTableUseCase
-import com.github.snick55.pswtestapp.domain.UpdateCarUseCase
+import com.github.snick55.pswtestapp.domain.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -20,8 +17,16 @@ abstract class CarsDomainModule {
     abstract fun bindInflateTableUseCase(useCase: InflateTableUseCase.Base): InflateTableUseCase
 
     @Binds
-    abstract fun bindGetCarByIdUseCase(getCarByIdUseCase: GetCarByIdUseCase.Base):GetCarByIdUseCase
+    abstract fun bindGetCarByIdUseCase(getCarByIdUseCase: GetCarByIdUseCase.Base): GetCarByIdUseCase
+
     @Binds
     abstract fun bindUpdateCarUseCase(useCase: UpdateCarUseCase.Base): UpdateCarUseCase
+
+    @Binds
+    abstract fun bindCreateCarUseCase(useCase: CreateCarUseCase.Base): CreateCarUseCase
+
+    @Binds
+    abstract fun bindValidator(validator: Validator.Base): Validator
+
 
 }
