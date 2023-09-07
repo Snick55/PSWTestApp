@@ -50,7 +50,6 @@ class FragmentAddCar : Fragment(R.layout.fragment_add_car) {
 
             binding.progressBar.visibility = if (state.showProgress) View.VISIBLE else View.INVISIBLE
 
-            Logg("${state.canGoBack}")
             if (state.canGoBack) {
                 goBack()
             }
