@@ -10,4 +10,6 @@
     <string name="save">Save</string>
     <string name="create_car">Create car</string>
     <string name="create_the_new_car">Create the new car</string>
+    <string name="illegal_price">incorrect price</string>
+    <string name="field_is_empty">field is empty</string>
 </resources>

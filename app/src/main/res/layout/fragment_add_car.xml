@@ -64,7 +64,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 app:boxCornerRadiusTopStart="@dimen/large_space"
                 app:boxCornerRadiusTopEnd="@dimen/large_space"
-                android:id="@+id/PriceInputLayout"
+                android:id="@+id/priceInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/large_space"
@@ -99,6 +99,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="invisible"
+            android:layout_marginBottom="100dp"
+            android:layout_gravity="bottom|center"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
 
         <Button
             android:id="@+id/createCarButton"

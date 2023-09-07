@@ -1,6 +1,7 @@
 package com.github.snick55.pswtestapp.di
 
 import com.github.snick55.pswtestapp.presentation.PreferenceSource
+import com.github.snick55.pswtestapp.presentation.addCar.AddCommunication
 import com.github.snick55.pswtestapp.presentation.carsList.CarItemUi
 import com.github.snick55.pswtestapp.presentation.carsList.DomainCarToItemUi
 import com.github.snick55.pswtestapp.presentation.details.CarDetailUi
@@ -37,5 +38,8 @@ abstract class CarsPresentationModule {
 
     @Binds
     abstract fun bindSettingsCarCommunication(communication: SettingsCarCommunication.Base): SettingsCarCommunication
+
+    @Binds
+    abstract fun bindAddCommunication(communication: AddCommunication.Base): AddCommunication
 
 }
