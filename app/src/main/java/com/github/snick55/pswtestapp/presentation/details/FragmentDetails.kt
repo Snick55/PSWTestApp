@@ -20,8 +20,7 @@ class FragmentDetails: Fragment(R.layout.fragment_details) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = args.carId
-        viewModel.getCarById(id)
+
         viewModel.observeDetailCar(viewLifecycleOwner){
             with(binding){
                 it.show(brandTextView,manufactureTextView,priceTextView,descriptionTextView)
@@ -29,11 +28,15 @@ class FragmentDetails: Fragment(R.layout.fragment_details) {
         }
 
         binding.settingButton.setOnClickListener {
-            val directions = FragmentDetailsDirections.actionFragmentDetailsToFragmentSettings(id)
+            val directions = FragmentDetailsDirections.actionFragmentDetailsToFragmentSettings(args.carId)
             navigateTo(directions)
         }
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getCarById(args.carId)
+    }
 
 }

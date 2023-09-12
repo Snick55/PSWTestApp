@@ -1,6 +1,8 @@
 package com.github.snick55.pswtestapp.presentation.settings
 
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,6 +23,9 @@ class SettingsViewModel @Inject constructor (
     private val mapper: CarDetailDomainToSettingsUiMapper<CarSettingsUi>
 ): ViewModel() {
 
+    private val _canGoBack = MutableLiveData(false)
+    val canGoBack: LiveData<Boolean> = _canGoBack
+
     fun getCarById(id: Int) = viewModelScope.launch(Dispatchers.IO) {
         getCarByIdUseCase.getCarById(id)
             .collect{
@@ -34,6 +39,9 @@ class SettingsViewModel @Inject constructor (
     fun updateCar(carSettingsUi: CarSettingsUi) = viewModelScope.launch(Dispatchers.IO) {
         try {
             updateCarUseCase.updateCar(carSettingsUi.toDomain())
+            withContext(Dispatchers.Main){
+                _canGoBack.value = true
+            }
         }catch (e: java.lang.Exception){
             Logg("something went wrong $e")
         }

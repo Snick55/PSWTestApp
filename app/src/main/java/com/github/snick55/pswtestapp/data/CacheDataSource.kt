@@ -1,6 +1,6 @@
-package com.github.snick55.pswtestapp.data.carslist
+package com.github.snick55.pswtestapp.data
 
-import com.github.snick55.pswtestapp.data.EmptyCacheException
+
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -64,7 +64,6 @@ interface CacheDataSource {
             }
         }
     }
-
 }
 
 

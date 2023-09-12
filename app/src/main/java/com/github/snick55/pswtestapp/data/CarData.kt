@@ -1,14 +1,14 @@
-package com.github.snick55.pswtestapp.data.carslist
+package com.github.snick55.pswtestapp.data
 
 import com.github.snick55.pswtestapp.domain.CarDetailDomain
 import com.github.snick55.pswtestapp.domain.CarDomain
 
 data class CarData(
-    private val id: Int,
+     val id: Int,
     private val brand: String,
     private val description: String,
     private val manufacturer: String,
-    private val price: Int
+     val price: Int
 ) {
     fun carDataToDomain() = CarDomain(id, brand, description, manufacturer, price)
 

@@ -1,6 +1,6 @@
 package com.github.snick55.pswtestapp.data.mappers
 
-import com.github.snick55.pswtestapp.data.carslist.CarData
+import com.github.snick55.pswtestapp.data.CarData
 import javax.inject.Inject
 
 interface DomainToDataMapper<T> {

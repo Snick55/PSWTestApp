@@ -21,6 +21,7 @@ class FragmentSettings : Fragment(R.layout.fragment_settings) {
     private val binding by viewBinding<FragmentSettingsBinding>()
     private var currentCar: CarSettingsUi? = null
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getCarById(args.carId)
@@ -33,6 +34,10 @@ class FragmentSettings : Fragment(R.layout.fragment_settings) {
         }
         binding.saveButton.setOnClickListener {
             viewModel.updateCar(simpleValidate())
+        }
+
+        viewModel.canGoBack.observe(viewLifecycleOwner){
+            if (it)
             goBack()
         }
     }

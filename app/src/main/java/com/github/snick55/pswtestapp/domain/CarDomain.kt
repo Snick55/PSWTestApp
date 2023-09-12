@@ -8,7 +8,7 @@ data class CarDomain(
     private val brand: String,
     private val description: String,
     private val manufacturer: String,
-    private val price: Int
+     val price: Int
 ){
 
      fun <T> map(mapper: DomainToDataMapper<T>): T{

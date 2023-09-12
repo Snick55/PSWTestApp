@@ -12,4 +12,5 @@
     <string name="create_the_new_car">Create the new car</string>
     <string name="illegal_price">incorrect price</string>
     <string name="field_is_empty">field is empty</string>
+    <string name="sort_by_price">Sort by price</string>
 </resources>

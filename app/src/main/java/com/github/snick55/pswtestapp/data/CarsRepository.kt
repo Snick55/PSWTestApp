@@ -1,8 +1,7 @@
 package com.github.snick55.pswtestapp.data
 
 import com.github.snick55.pswtestapp.core.Container
-import com.github.snick55.pswtestapp.data.carslist.CacheDataSource
-import com.github.snick55.pswtestapp.data.carslist.CarData
+import com.github.snick55.pswtestapp.core.Logg
 import com.github.snick55.pswtestapp.data.mappers.DomainToDataMapper
 import com.github.snick55.pswtestapp.domain.CarAddDomain
 import com.github.snick55.pswtestapp.domain.CarDetailDomain
@@ -32,6 +31,8 @@ interface CarsRepository {
 
         override fun getCarById(id: Int): Flow<CarDetailDomain> {
             return cacheDataSource.getCarById(id).map {
+                Logg("${it.id}")
+
                 it.carDataToDetailsDomain()
             }
         }

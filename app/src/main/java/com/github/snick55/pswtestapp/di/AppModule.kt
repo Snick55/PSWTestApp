@@ -3,7 +3,7 @@ package com.github.snick55.pswtestapp.di
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
-import com.github.snick55.pswtestapp.data.carslist.CarsDatabase
+import com.github.snick55.pswtestapp.data.CarsDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -21,8 +21,8 @@ class CarsListViewModel @Inject constructor(
     private val _cars = MutableLiveData<Container<List<CarItemUi>>>()
     val cars: LiveData<Container<List<CarItemUi>>> = _cars
 
-    fun getCars() = viewModelScope.launch(Dispatchers.IO) {
-        val carsUi = getCarsUseCase.getAllCars().map { cars ->
+    fun getCars(isSorted: Boolean = false) = viewModelScope.launch(Dispatchers.IO) {
+        val carsUi = getCarsUseCase.getAllCars(isSorted).map { cars ->
             cars.map {
                it.map(mapper)
             }

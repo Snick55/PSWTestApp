@@ -2,6 +2,7 @@ package com.github.snick55.pswtestapp.presentation.carsList
 
 import android.os.Bundle
 import android.view.View
+import android.widget.CheckBox
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -21,7 +22,6 @@ class FragmentCarsList: Fragment(R.layout.fragment_carlist) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getCars()
         val carsAdapter = CarsListAdapter(onItemPressed = {
             val direction = FragmentCarsListDirections.actionFragmentCarsListToFragmentDetails(it)
             navigateTo(direction)
@@ -32,17 +32,28 @@ class FragmentCarsList: Fragment(R.layout.fragment_carlist) {
             adapter= carsAdapter
         }
 
+        binding.sortCheckBox.setOnClickListener {
+            viewModel.getCars((it as CheckBox).isChecked)
+        }
+
         binding.addCarButton.setOnClickListener {
             val directions = FragmentCarsListDirections.actionFragmentCarsListToFragmentAddCar()
             navigateTo(directions)
         }
         binding.root.observe(viewLifecycleOwner,viewModel.cars){
             carsAdapter.setList(it)
+            binding.carsRecycler.scrollToPosition(0)
         }
 
         binding.root.setTryAgainListener {
-            viewModel.getCars()
+            viewModel.getCars(binding.sortCheckBox.isChecked)
         }
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getCars(binding.sortCheckBox.isChecked)
     }
 }
 

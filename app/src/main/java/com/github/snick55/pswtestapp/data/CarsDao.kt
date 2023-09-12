@@ -1,4 +1,4 @@
-package com.github.snick55.pswtestapp.data.carslist
+package com.github.snick55.pswtestapp.data
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
@@ -16,5 +16,5 @@ interface CarsDao {
     fun getCarById(id: Int): Flow<CarDB>
 
     @Update(entity = CarDB::class, onConflict = OnConflictStrategy.REPLACE)
-    fun updateCar(carDB: CarDB)
+   suspend fun updateCar(carDB: CarDB)
 }

@@ -1,8 +1,8 @@
 package com.github.snick55.pswtestapp.di
 
 import com.github.snick55.pswtestapp.data.CarsRepository
-import com.github.snick55.pswtestapp.data.carslist.CacheDataSource
-import com.github.snick55.pswtestapp.data.carslist.CarData
+import com.github.snick55.pswtestapp.data.CacheDataSource
+import com.github.snick55.pswtestapp.data.CarData
 import com.github.snick55.pswtestapp.data.mappers.DomainToDataMapper
 import dagger.Binds
 import dagger.Module
@@ -17,7 +17,7 @@ abstract class CarsDataModule {
     abstract fun bindCarsRepository(repository: CarsRepository.Base): CarsRepository
 
     @Binds
-    abstract fun bindCacheDataSource(cacheDataSource: CacheDataSource.Base):CacheDataSource
+    abstract fun bindCacheDataSource(cacheDataSource: CacheDataSource.Base): CacheDataSource
 
     @Binds
     abstract fun bindDomainToDataMapper(mapper: DomainToDataMapper.Base): DomainToDataMapper<CarData>
