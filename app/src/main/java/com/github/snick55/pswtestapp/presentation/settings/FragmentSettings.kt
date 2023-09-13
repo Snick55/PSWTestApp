@@ -28,7 +28,7 @@ class FragmentSettings : Fragment(R.layout.fragment_settings) {
         binding.custom.container = Container.Success("")
         viewModel.observeCar(viewLifecycleOwner) {
             currentCar = it
-                with(binding) {
+            with(binding) {
                 it.show(brandEditText, descriptionEditText, manufactureEditText, priceEditText)
             }
         }
@@ -36,21 +36,23 @@ class FragmentSettings : Fragment(R.layout.fragment_settings) {
             viewModel.updateCar(simpleValidate())
         }
 
-        viewModel.canGoBack.observe(viewLifecycleOwner){
+        viewModel.canGoBack.observe(viewLifecycleOwner) {
             if (it)
-            goBack()
+                goBack()
         }
     }
 
 
     private fun simpleValidate(): CarSettingsUi {
         val brand = binding.brandEditText.text.toString().ifBlank { currentCar!!.brand }
-        val description = binding.descriptionEditText.text.toString().ifBlank { currentCar!!.description }
-        val manufactures = binding.manufactureEditText.text.toString().ifBlank { currentCar!!.manufacturer }
+        val description =
+            binding.descriptionEditText.text.toString().ifBlank { currentCar!!.description }
+        val manufactures =
+            binding.manufactureEditText.text.toString().ifBlank { currentCar!!.manufacturer }
         val price = if (binding.priceEditText.text.toString()
                 .isBlank()
         ) currentCar!!.price else binding.priceEditText.text.toString().toInt()
-        return  CarSettingsUi(args.carId,brand,description,manufactures,price)
+        return CarSettingsUi(args.carId, brand, description, manufactures, price)
     }
 
 }

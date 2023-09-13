@@ -4,17 +4,17 @@ import com.github.snick55.pswtestapp.domain.CarDetailDomain
 import com.github.snick55.pswtestapp.domain.CarDomain
 
 data class CarData(
-     val id: Int,
+    private val id: Int,
     private val brand: String,
     private val description: String,
     private val manufacturer: String,
-     val price: Int
+    private val price: Int
 ) {
     fun carDataToDomain() = CarDomain(id, brand, description, manufacturer, price)
 
     fun carDataToDetailsDomain() = CarDetailDomain(brand, description, manufacturer, price)
 
     fun toCarDb() =
-        CarDB(brand = brand, description = description, manufacturer = manufacturer, price = price)
+        CarDB(id,brand = brand, description = description, manufacturer = manufacturer, price = price)
 
 }

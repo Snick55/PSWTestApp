@@ -8,7 +8,7 @@ data class CarSettingsUi(
      val brand: String,
      val description: String,
      val manufacturer: String,
-     val price: Int = 0
+     val price: Int
 ) {
     fun toDomain() = CarDomain(id, brand, description, manufacturer, price)
     fun show(

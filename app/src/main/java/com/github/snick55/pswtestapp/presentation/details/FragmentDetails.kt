@@ -20,7 +20,7 @@ class FragmentDetails: Fragment(R.layout.fragment_details) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel.getCarById(args.carId)
         viewModel.observeDetailCar(viewLifecycleOwner){
             with(binding){
                 it.show(brandTextView,manufactureTextView,priceTextView,descriptionTextView)
@@ -32,11 +32,6 @@ class FragmentDetails: Fragment(R.layout.fragment_details) {
             navigateTo(directions)
         }
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.getCarById(args.carId)
     }
 
 }
