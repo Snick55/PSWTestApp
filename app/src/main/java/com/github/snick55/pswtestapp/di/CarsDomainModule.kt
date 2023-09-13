@@ -28,5 +28,8 @@ abstract class CarsDomainModule {
     @Binds
     abstract fun bindValidator(validator: Validator.Base): Validator
 
+    @Binds
+    abstract fun bindFiltersUseCase(useCase: FiltersUseCase.Base): FiltersUseCase
+
 
 }

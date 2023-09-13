@@ -6,6 +6,7 @@ import com.github.snick55.pswtestapp.domain.CarAddDomain
 import com.github.snick55.pswtestapp.domain.CarDetailDomain
 import com.github.snick55.pswtestapp.domain.CarDomain
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -20,6 +21,8 @@ interface CarsRepository {
     suspend fun updateCar(car: CarDomain)
 
     suspend fun createCar(carAddDomain: CarAddDomain)
+
+     fun getAllFilters(): Flow<Container<List<String>>>
 
 
     class Base @Inject constructor(
@@ -37,6 +40,7 @@ interface CarsRepository {
             return try {
                 Container.Success(cacheDataSource.getCachedCars().map {
                     it.carDataToDomain()
+
                 })
             } catch (e: Exception) {
                 Container.Error(e)
@@ -62,6 +66,18 @@ interface CarsRepository {
                 )
             )
         }
+
+        override  fun getAllFilters(): Flow<Container<List<String>>> = flow {
+            val set = hashSetOf<String>()
+            getAllCars().unwrap().forEach {
+                set.add(it.manufacturer.lowercase())
+            }
+            if (set.isEmpty())
+                emit(Container.Error(EmptyCacheException("No one filters")))
+            else
+                emit(Container.Success(set.toList()))
+        }
     }
+
 
 }

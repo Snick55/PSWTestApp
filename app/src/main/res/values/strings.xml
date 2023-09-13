@@ -13,4 +13,5 @@
     <string name="illegal_price">incorrect price</string>
     <string name="field_is_empty">field is empty</string>
     <string name="sort_by_price">Sort by price</string>
+    <string name="filters">Filters</string>
 </resources>

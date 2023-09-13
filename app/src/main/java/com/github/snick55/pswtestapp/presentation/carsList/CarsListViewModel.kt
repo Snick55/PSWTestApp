@@ -15,13 +15,14 @@ import javax.inject.Inject
 @HiltViewModel
 class CarsListViewModel @Inject constructor(
     private val getCarsUseCase: GetCarsUseCase,
-    private val mapper: DomainCarToItemUi<CarItemUi>
+    private val mapper: DomainCarToItemUi<CarItemUi>,
 ) : ViewModel() {
 
     private val _cars = MutableLiveData<Container<List<CarItemUi>>>()
     val cars: LiveData<Container<List<CarItemUi>>> = _cars
 
     fun getCars(isSorted: Boolean = false) = viewModelScope.launch(Dispatchers.IO) {
+        _cars.postValue(Container.Pending)
         val carsUi = getCarsUseCase.getAllCars(isSorted).map { cars ->
             cars.map {
                it.map(mapper)

@@ -48,6 +48,12 @@ class FragmentCarsList: Fragment(R.layout.fragment_carlist) {
         binding.root.setTryAgainListener {
             viewModel.getCars(binding.sortCheckBox.isChecked)
         }
+
+        binding.filtersButton.setOnClickListener {
+            val directions = FragmentCarsListDirections.actionFragmentCarsListToFragmentFilters2()
+            navigateTo(directions)
+        }
+
     }
 
 

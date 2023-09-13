@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_fragmentCarsList_to_fragmentAddCar"
             app:destination="@id/fragmentAddCar" />
+        <action
+            android:id="@+id/action_fragmentCarsList_to_fragmentFilters2"
+            app:destination="@id/fragmentFilters2" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDetails"
@@ -42,4 +45,9 @@
         android:name="com.github.snick55.pswtestapp.presentation.addCar.FragmentAddCar"
         android:label="fragment_add_car"
         tools:layout="@layout/fragment_add_car" />
+    <fragment
+        android:id="@+id/fragmentFilters2"
+        android:name="com.github.snick55.pswtestapp.presentation.filters.FragmentFilters"
+        android:label="fragment_filters"
+        tools:layout="@layout/fragment_filters" />
 </navigation>
